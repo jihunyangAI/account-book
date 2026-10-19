@@ -1,0 +1,400 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fafafa;
+  --surface: #f3f3f3;
+  --surface-raised: #ffffff;
+  --ink: #1d1d1f;
+  --muted: #86868b;
+  --accent: #1d1d1f;
+  --accent-hover: #000000;
+  --focus: rgba(29, 29, 31, 0.12);
+  --radius: 14px;
+  --radius-sm: 10px;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-body), "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page {
+  width: min(640px, calc(100% - 3rem));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4.5rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.page-glow {
+  display: none;
+}
+
+.header {
+  text-align: left;
+}
+
+.brand-mark {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.subtitle {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.input {
+  width: 100%;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--ink);
+  padding: 0.9rem 1rem;
+  outline: none;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input::placeholder {
+  color: #b0b0b5;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 3px var(--focus);
+}
+
+.amount-wrap {
+  position: relative;
+}
+
+.amount-input {
+  padding-right: 2.5rem;
+  font-family: var(--font-display), sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+}
+
+.currency {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.submit {
+  margin-top: 0.35rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  padding: 0.95rem 1.1rem;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.15s ease;
+}
+
+.submit:hover {
+  background: var(--accent-hover);
+  transform: none;
+  filter: none;
+}
+
+.submit:active {
+  background: #000;
+}
+
+.submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ledger {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.ledger-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 0 0.15rem;
+}
+
+.ledger-head h2 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.ledger-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.ledger-head strong {
+  color: var(--ink);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.35rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.empty {
+  margin: 0;
+  padding: 2.5rem 1rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
+.error-banner {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.expense-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.expense-card {
+  padding: 1.2rem 1.25rem;
+  border-radius: var(--radius);
+  border: 0;
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.expense-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.expense-desc {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+
+.expense-date {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.expense-amount {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 17px;
+  }
+
+  .page {
+    width: 100%;
+    padding: 2.25rem 1.25rem 3rem;
+    gap: 2.25rem;
+  }
+
+  .title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .main {
+    gap: 2.25rem;
+  }
+
+  .form {
+    gap: 1.5rem;
+    padding: 1.35rem;
+  }
+
+  .field-grid {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .field {
+    gap: 0.55rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .input {
+    min-height: 3.25rem;
+    padding: 0.95rem 1.05rem;
+    font-size: 1.05rem;
+  }
+
+  .amount-input {
+    padding-right: 2.6rem;
+  }
+
+  .submit {
+    min-height: 3.4rem;
+    font-size: 1.05rem;
+  }
+
+  .ledger-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .ledger-head h2 {
+    font-size: 1.15rem;
+  }
+
+  .ledger-head strong {
+    font-size: 1.5rem;
+  }
+
+  .expense-cards {
+    gap: 0.75rem;
+  }
+
+  .expense-card {
+    padding: 1.2rem 1.15rem;
+  }
+
+  .expense-desc {
+    font-size: 1.05rem;
+  }
+
+  .expense-amount {
+    font-size: 1.35rem;
+  }
+
+  .expense-date {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .page {
+    padding-inline: 1rem;
+  }
+}
