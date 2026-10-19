@@ -14,8 +14,8 @@ const notoSansKr = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "나의 AI가계부",
-  description: "간단하고 모던한 지출 기록 가계부",
+  title: "AI가계부 챗봇",
+  description: "대화로 기록하는 AI 가계부",
 };
 
 export const viewport: Viewport = {
